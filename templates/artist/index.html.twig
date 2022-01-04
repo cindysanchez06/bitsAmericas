@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArtistController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>{{ artist.name }}</h1>
+        <img style="width: 300px" src="{{ artist.images[0].url }}">
+        <table>
+            <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Album</th>
+                <th>Cancion</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for album in albums %}
+                <tr>
+                    <td>
+                        <img style="width: 80px" src="{{ album.images[0].url }}">
+                    </td>
+                    <td>
+                        <h4>{{ album.name }}</h4>
+                    </td>
+                    <td>
+                        {{ album.tracks.items[0].name }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
