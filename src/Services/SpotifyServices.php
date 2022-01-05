@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use http\Env;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SpotifyServices
@@ -21,8 +22,8 @@ class SpotifyServices
 
     public function auth()
     {
-        $clientId = '7f7a9b5630684d5dab3445fc0a9821e2';
-        $clientSecret = '11dd3a40de05498aad65b735d1af82cd';
+        $clientId = $_ENV['CLIENT_ID_SPOTIFY'];
+        $clientSecret = $_ENV['CLIENT_SECRET_SPOTIFY'];
         $response = $this->requestService->requests('POST',
             $this->apiAuth . '/token',
             [
